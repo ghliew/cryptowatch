@@ -12,5 +12,6 @@ access_token_secret= os.environ.get("access_token_secret")
 
 mapquest_key= os.environ.get("mapquest_key")
 
-mongo_connection_string = os.environ.get("mongo_connection_string")
+# mongo_connection_string = os.environ.get("mongo_connection_string")
+mongo_connection_string="mongodb+srv://guliew:080646La.3@cluster0.doelt.mongodb.net/crypto?ssl=true&ssl_cert_reqs=CERT_NONE"
 

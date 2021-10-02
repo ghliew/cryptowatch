@@ -82,8 +82,8 @@ def get_tweets(crypto_name, num_tweet):
 #####################
 ### Streamlit UI  ###
 #####################
-atlas_client = MongoClient(st.secrets["mongo_connection_string"])
-# atlas_client = MongoClient(keys.mongo_connection_string)
+# atlas_client = MongoClient(st.secrets["mongo_connection_string"])
+atlas_client = MongoClient(keys.mongo_connection_string)
 db = atlas_client.crypto 
 
 st.set_page_config(page_title="Crypto Watch 💰")
