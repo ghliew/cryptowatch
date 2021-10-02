@@ -5,12 +5,13 @@ import keys
 from textblob import TextBlob 
 import time 
 import tweepy
+import streamlit as st
 
 def get_API(wait=True, notify=True):
     """Authenticate with Twitter and return API object."""
     # configure the OAuthHandler
-    auth = tweepy.OAuthHandler(keys.consumer_key, keys.consumer_secret)
-    auth.set_access_token(keys.access_token, keys.access_token_secret)
+    auth = tweepy.OAuthHandler(st.secrets["consumer_key"], st.secrets["consumer_secret"]t)
+    auth.set_access_token(st.secrets["access_token"], st.secrets["access_token_secret"])
 
     # get the API object
     return tweepy.API(auth, wait_on_rate_limit=wait, 
@@ -52,7 +53,7 @@ def get_geocodes(tweet_list):
     """Get the latitude and longitude for each tweet's location.
     Returns the number of tweets with invalid location data."""
     print('Getting coordinates for tweet locations...')
-    geo = OpenMapQuest(api_key=keys.mapquest_key)  # geocoder
+    geo = OpenMapQuest(api_key=st.secrets["mapquest_key"])  # geocoder
     bad_locations = 0  
 
     for tweet in tweet_list:
