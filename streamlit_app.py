@@ -13,6 +13,10 @@ import folium
 import folium.plugins as plugins
 from streamlit_folium import folium_static
 
+#Database
+atlas_client = MongoClient(st.secrets["mongo_connection_string"])
+db = atlas_client.crypto 
+
 # Crypto list of top 10 crypto by market cap
 crypto_list = ['Bitcoin - BTC-USD', 'Ethereum - ETH-USD', 'Cardano - ADA-USD', 'BinanceCoin - BNB-USD', 
                'Ripple -XRP-USD ', 'Solana - SOL1-USD', 'Polkadot - DOT1-USD', 'Dogecoin - DOGE-USD', 
@@ -73,18 +77,16 @@ def get_tweets(crypto_name, num_tweet):
     crypto_dict = df.to_dict('records')
     return crypto_dict
 
-# @st.cache()
-# def get_data(db):
-#     df_db = pd.DataFrame(list(db.tweets.find()))
-#     return df_db
+@st.cache()
+def get_data():
+    df_db = pd.DataFrame(list(db.tweets.find()))
+    return df_db
 
 
 #####################
 ### Streamlit UI  ###
 #####################
-# atlas_client = MongoClient(st.secrets["mongo_connection_string"])
-atlas_client = MongoClient(keys.mongo_connection_string)
-db = atlas_client.crypto 
+# atlas_client = MongoClient(keys.mongo_connection_string)
 
 st.set_page_config(page_title="Crypto Watch 💰")
 
@@ -137,7 +139,8 @@ if crypto_ticker!="Cryptocurrency":
 
    
     st.header('Recent Tweets')
-    crypto_df = pd.DataFrame(list(db.tweets.find()))
+    # crypto_df = pd.DataFrame(list(db.tweets.find()))
+    crypto_df = get_data()
     del crypto_df['_id']
     crypto_ticker_df = crypto_df[crypto_df['crypto']==crypto_name]
     # crypto_ticker_df.index = np.arange(1, len(crypto_ticker_df)+1)
