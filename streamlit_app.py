@@ -73,11 +73,16 @@ def get_tweets(crypto_name, num_tweet):
     crypto_dict = df.to_dict('records')
     return crypto_dict
 
+# @st.cache()
+# def get_data(db):
+#     df_db = pd.DataFrame(list(db.tweets.find()))
+#     return df_db
+
 
 #####################
 ### Streamlit UI  ###
 #####################
-atlas_client = MongoClient(st.secrets["mongo_connection_string"])
+atlas_client = MongoClient(**st.secrets["mongo_connection_string"])
 # atlas_client = MongoClient(keys.mongo_connection_string)
 db = atlas_client.crypto 
 
