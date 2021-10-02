@@ -15,6 +15,7 @@ from streamlit_folium import folium_static
 
 #Database
 atlas_client = MongoClient(st.secrets["mongo_connection_string"])
+# atlas_client = MongoClient(keys.mongo_connection_string)
 db = atlas_client.crypto 
 
 # Crypto list of top 10 crypto by market cap
@@ -86,8 +87,6 @@ def get_data():
 #####################
 ### Streamlit UI  ###
 #####################
-# atlas_client = MongoClient(keys.mongo_connection_string)
-
 st.set_page_config(page_title="Crypto Watch 💰")
 
 st.title("Crypto Watch 💰")
