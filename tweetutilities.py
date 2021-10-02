@@ -10,7 +10,7 @@ import streamlit as st
 def get_API(wait=True, notify=True):
     """Authenticate with Twitter and return API object."""
     # configure the OAuthHandler
-    auth = tweepy.OAuthHandler(st.secrets["consumer_key"], st.secrets["consumer_secret"]t)
+    auth = tweepy.OAuthHandler(st.secrets["consumer_key"], st.secrets["consumer_secret"])
     auth.set_access_token(st.secrets["access_token"], st.secrets["access_token_secret"])
 
     # get the API object
