@@ -78,7 +78,7 @@ def get_tweets(crypto_name, num_tweet):
     crypto_dict = df.to_dict('records')
     return crypto_dict
 
-@st.cache()
+# @st.cache()
 def get_data():
     df_db = pd.DataFrame(list(db.tweets.find()))
     return df_db
