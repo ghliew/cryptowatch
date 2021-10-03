@@ -108,7 +108,7 @@ crypto_ticker = select_string.split()[2]
 
 ## Sidebar Section
 st.sidebar.header("Database")
-num_display = st.sidebar.slider("Number of Tweets to Display", 1, 20, 5, 1)
+num_display = st.sidebar.slider("Number of Tweets to Display", 1, 20, 10, 1)
 num_tweet = st.sidebar.slider("Number of Live Tweets to Pull into Database", 1, 10, 5, 1)
 if st.sidebar.button("Stream Tweets Into Database"):
     if crypto_name != 'Select':
