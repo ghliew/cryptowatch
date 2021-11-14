@@ -71,7 +71,7 @@ def get_geocodes(tweet_list):
                 time.sleep(delay)
                 delay += .1
 
-        if geo_location:  
+        if geo_location and geo_location.latitude != None:  
             tweet['latitude'] = geo_location.latitude
             tweet['longitude'] = geo_location.longitude
         else:  
